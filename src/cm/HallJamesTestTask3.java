@@ -476,7 +476,7 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(0,24);
 
-        BigDecimal outputExpected = new BigDecimal(16.00);
+        BigDecimal outputExpected = new BigDecimal("16.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
@@ -488,7 +488,7 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(23,24);
 
-        BigDecimal outputExpected = new BigDecimal(0);
+        BigDecimal outputExpected = new BigDecimal("0.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
@@ -500,7 +500,7 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(0,1);
 
-        BigDecimal outputExpected = new BigDecimal(0);
+        BigDecimal outputExpected = new BigDecimal("0.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
@@ -512,7 +512,7 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(0,24);
 
-        BigDecimal outputExpected = new BigDecimal(16.00);
+        BigDecimal outputExpected = new BigDecimal("16.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
@@ -524,7 +524,7 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(-1,24);
 
-        BigDecimal outputExpected = new BigDecimal(16.00);
+        BigDecimal outputExpected = new BigDecimal("16.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
@@ -536,7 +536,7 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(25,24);
 
-        BigDecimal outputExpected = new BigDecimal(16.00);
+        BigDecimal outputExpected = new BigDecimal("16.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
@@ -548,7 +548,7 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(0,-1);
 
-        BigDecimal outputExpected = new BigDecimal(16.00);
+        BigDecimal outputExpected = new BigDecimal("16.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
@@ -560,7 +560,7 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(0,25);
 
-        BigDecimal outputExpected = new BigDecimal(16.00);
+        BigDecimal outputExpected = new BigDecimal("16.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
@@ -572,7 +572,7 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(11,12);
 
-        BigDecimal outputExpected = new BigDecimal(10.00);
+        BigDecimal outputExpected = new BigDecimal("10.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
@@ -584,7 +584,7 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(0,24);
 
-        BigDecimal outputExpected = new BigDecimal(16.00);
+        BigDecimal outputExpected = new BigDecimal("16.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
@@ -596,7 +596,7 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(11,11);
 
-        BigDecimal outputExpected = new BigDecimal(16.00);
+        BigDecimal outputExpected = new BigDecimal("16.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
@@ -608,19 +608,79 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(12,11);
 
-        BigDecimal outputExpected = new BigDecimal(16.00);
+        BigDecimal outputExpected = new BigDecimal("16.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
 
     @Test()
     public void test13Calculate() throws IllegalArgumentException {
-        //Partitioned Test -> startHour < endHour
+        //Partitioned Test -> kind = STUDENT
         Rate rate = testRateMethodStudent();
 
         Period per = new Period(0,24);
 
-        BigDecimal outputExpected = new BigDecimal(76.38);
+        BigDecimal outputExpected = new BigDecimal("76.38");
+
+        Assert.assertEquals(outputExpected, rate.calculate(per));
+    }
+
+    @Test()
+    public void test14Calculate() throws IllegalArgumentException {
+        //Partitioned Test -> kind = STUDENT
+        Rate rate = testRateMethodStudent();
+
+        Period per = new Period(9,10);
+
+        BigDecimal outputExpected = new BigDecimal("5.00");
+
+        Assert.assertEquals(outputExpected, rate.calculate(per));
+    }
+
+    @Test()
+    public void test15Calculate() throws IllegalArgumentException {
+        //Partitioned Test -> kind = MANAGEMENT
+        Rate rate = testRateMethodManagement();
+
+        Period per = new Period(0,24);
+
+        BigDecimal outputExpected = new BigDecimal("100.00");
+
+        Assert.assertEquals(outputExpected, rate.calculate(per));
+    }
+
+    @Test()
+    public void test16Calculate() throws IllegalArgumentException {
+        //Partitioned Test -> kind = MANAGEMENT
+        Rate rate = testRateMethodManagement();
+
+        Period per = new Period(0,1);
+
+        BigDecimal outputExpected = new BigDecimal("3.00");
+
+        Assert.assertEquals(outputExpected, rate.calculate(per));
+    }
+
+    @Test()
+    public void test17Calculate() throws IllegalArgumentException {
+        //Partitioned Test -> kind = VISITOR
+        Rate rate = testRateMethodVisitor();
+
+        Period per = new Period(0,24);
+
+        BigDecimal outputExpected = new BigDecimal("46.00");
+
+        Assert.assertEquals(outputExpected, rate.calculate(per));
+    }
+
+    @Test()
+    public void test18Calculate() throws IllegalArgumentException {
+        //Partitioned Test -> kind = VISITOR
+        Rate rate = testRateMethodVisitor();
+
+        Period per = new Period(9,10);
+
+        BigDecimal outputExpected = new BigDecimal("0.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
