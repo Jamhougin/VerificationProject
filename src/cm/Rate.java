@@ -62,7 +62,6 @@ public class Rate {
     private Boolean isValidPeriods(ArrayList<Period> list) {
         Boolean isValid = true;
         if (list.size() >= 2) {
-            Period secondPeriod;
             int i = 0;
             int lastIndex = list.size()-1;
             while (i < lastIndex && isValid) {
@@ -77,7 +76,7 @@ public class Rate {
      * checks if a period is a valid addition to a collection of periods
      * @param period the Period addition
      * @param list the collection of periods to check
-     * @return true if the period does not overlap in the collecton of periods
+     * @return true if the period does not overlap in the collection of periods
      */
     private Boolean isValidPeriod(Period period, List<Period> list) {
         Boolean isValid = true;
@@ -88,11 +87,33 @@ public class Rate {
         }
         return isValid;
     }
+
     public BigDecimal calculate(Period periodStay) {
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
-        return (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
+        BigDecimal charge = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
                 this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
+
+        switch (this.kind) {
+            case VISITOR -> {
+                VisitorRate visReduction = new VisitorRate();
+                charge = visReduction.reduction(charge);
+            }
+            case STUDENT -> {
+                StudentRate stuReduction = new StudentRate();
+                charge = stuReduction.reduction(charge);
+            }
+            case STAFF -> {
+                StaffRate staReduction = new StaffRate();
+                charge = staReduction.reduction(charge);
+            }
+            case MANAGEMENT -> {
+                ManagementRate manReduction = new ManagementRate();
+                charge = manReduction.reduction(charge);
+            }
+        }
+
+        return charge;
     }
 
 }
