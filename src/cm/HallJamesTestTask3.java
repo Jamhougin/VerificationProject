@@ -443,7 +443,7 @@ public class HallJamesTestTask3 {
         //Partitioned Test -> 0 ≤ startHour
         CarParkKind kind = CarParkKind.MANAGEMENT;
         BigDecimal normalRate = new BigDecimal(10);
-        BigDecimal reducedRate = new BigDecimal(5);
+        BigDecimal reducedRate = new BigDecimal(2);
         ArrayList<Period> reducedPeriods = new ArrayList<>();
         reducedPeriods.add(new Period(9,11));
         reducedPeriods.add(new Period(17,19));
@@ -644,7 +644,7 @@ public class HallJamesTestTask3 {
 
         Period per = new Period(0,24);
 
-        BigDecimal outputExpected = new BigDecimal("100.00");
+        BigDecimal outputExpected = new BigDecimal("88.00");
 
         Assert.assertEquals(outputExpected, rate.calculate(per));
     }
@@ -654,7 +654,7 @@ public class HallJamesTestTask3 {
         //Partitioned Test -> kind = MANAGEMENT
         Rate rate = testRateMethodManagement();
 
-        Period per = new Period(0,1);
+        Period per = new Period(10,11);
 
         BigDecimal outputExpected = new BigDecimal("3.00");
 
