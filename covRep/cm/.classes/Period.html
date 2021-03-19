@@ -1,0 +1,150 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Period</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">cm</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Period (cm)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Period</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95.2%
+  </span>
+  <span class="absValue">
+    (20/ 21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package cm;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.List;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;public class Period {
+<i>7</i>&nbsp;    private int startHour;
+<i>8</i>&nbsp;    private int endHour;
+<i>9</i>&nbsp;
+<b class="fc"><i>10</i>&nbsp;    public Period(int start, int end) {</b>
+<b class="fc"><i>11</i>&nbsp;        if (start &gt;= end) {</b>
+<b class="fc"><i>12</i>&nbsp;            throw new IllegalArgumentException(&quot;start of period cannot be later or equal to end of period&quot;);</b>
+<i>13</i>&nbsp;        }
+<b class="pc"><i>14</i>&nbsp;        if (start &lt; 0 || start &gt; 24 || end &lt; 0 || end &gt; 24) {</b>
+<b class="fc"><i>15</i>&nbsp;            throw new IllegalArgumentException(&quot;start of period and end of period must be between 0 and 24&quot;);</b>
+<i>16</i>&nbsp;        }
+<b class="fc"><i>17</i>&nbsp;        this.startHour = start;</b>
+<b class="fc"><i>18</i>&nbsp;        this.endHour = end;</b>
+<i>19</i>&nbsp;    }
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    /**
+<i>22</i>&nbsp;     * checks if a given hour is within the period
+<i>23</i>&nbsp;     * @param hour the start of the hour to check
+<i>24</i>&nbsp;     * @return true if the hour is within the period
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    private Boolean isIn(int hour) {
+<b class="fc"><i>27</i>&nbsp;        return hour &gt;= this.startHour &amp;&amp; hour &lt; this.endHour;</b>
+<i>28</i>&nbsp;    }
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    private static Boolean isIn(int hour, List&lt;Period&gt; list) {
+<b class="fc"><i>31</i>&nbsp;        Boolean isIn = false;</b>
+<b class="fc"><i>32</i>&nbsp;        int i = 0;</b>
+<b class="fc"><i>33</i>&nbsp;        while (i &lt; list.size() &amp;&amp; !isIn) {</b>
+<b class="fc"><i>34</i>&nbsp;            isIn = list.get(i).isIn(hour);</b>
+<b class="fc"><i>35</i>&nbsp;            i++;</b>
+<i>36</i>&nbsp;        }
+<b class="fc"><i>37</i>&nbsp;        return isIn;</b>
+<i>38</i>&nbsp;    }
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    /**
+<i>41</i>&nbsp;     * The duration of a period
+<i>42</i>&nbsp;     * @return the number of whole hours a this period covers
+<i>43</i>&nbsp;     */
+<i>44</i>&nbsp;    public int duration() {
+<b class="nc"><i>45</i>&nbsp;        return this.endHour - this.startHour;</b>
+<i>46</i>&nbsp;    }
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;    /**
+<i>49</i>&nbsp;     * Returns the numbers of hours this period is included in the list
+<i>50</i>&nbsp;     * @param list the list of periods to check
+<i>51</i>&nbsp;     * @return the number of full hours covered by this period
+<i>52</i>&nbsp;     */
+<i>53</i>&nbsp;    public int occurences(List&lt;Period&gt; list) {
+<b class="fc"><i>54</i>&nbsp;        int occurences = 0;</b>
+<b class="fc"><i>55</i>&nbsp;        for (int hour = this.startHour; hour &lt; this.endHour; hour++) {</b>
+<b class="fc"><i>56</i>&nbsp;            if (isIn(hour, list)) {</b>
+<b class="fc"><i>57</i>&nbsp;                occurences++;</b>
+<i>58</i>&nbsp;            }
+<i>59</i>&nbsp;        }
+<b class="fc"><i>60</i>&nbsp;        return occurences;</b>
+<i>61</i>&nbsp;    }
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;    public boolean overlaps(Period period) {
+<b class="fc"><i>64</i>&nbsp;        return this.endHour&gt;period.startHour &amp;&amp; this.startHour&lt;period.endHour;</b>
+<i>65</i>&nbsp;    }
+<i>66</i>&nbsp;}
+<i>67</i>&nbsp;
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-03-15 12:55</div>
+</div>
+</body>
+</html>

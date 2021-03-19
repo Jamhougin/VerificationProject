@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Rate.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HallJamesVerificationProject$HallJamesTestTask3.exec</a> &gt; <a href="index.source.html" class="el_package">cm</a> &gt; <span class="el_source">Rate.java</span></div><h1>Rate.java</h1><pre class="source lang-java linenums">package cm;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Rate {
+    private CarParkKind kind;
+    private BigDecimal hourlyNormalRate;
+    private BigDecimal hourlyReducedRate;
+<span class="fc" id="L12">    private ArrayList&lt;Period&gt; reduced = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L13">    private ArrayList&lt;Period&gt; normal = new ArrayList&lt;&gt;();</span>
+
+    public Rate(CarParkKind kind, BigDecimal normalRate, BigDecimal reducedRate, ArrayList&lt;Period&gt; reducedPeriods
+<span class="fc" id="L16">            , ArrayList&lt;Period&gt; normalPeriods) {</span>
+<span class="fc bfc" id="L17" title="All 4 branches covered.">        if (reducedPeriods == null || normalPeriods == null) {</span>
+<span class="fc" id="L18">            throw new IllegalArgumentException(&quot;periods cannot be null&quot;);</span>
+        }
+<span class="fc bfc" id="L20" title="All 4 branches covered.">        if (normalRate == null || reducedRate == null) {</span>
+<span class="fc" id="L21">            throw new IllegalArgumentException(&quot;The rates cannot be null&quot;);</span>
+        }
+<span class="fc bfc" id="L23" title="All 4 branches covered.">        if (normalRate.compareTo(BigDecimal.ZERO) &lt; 0 || reducedRate.compareTo(BigDecimal.ZERO) &lt; 0) {</span>
+<span class="fc" id="L24">            throw new IllegalArgumentException(&quot;A rate cannot be negative&quot;);</span>
+        }
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (normalRate.compareTo(reducedRate) &lt; 0) {</span>
+<span class="fc" id="L27">            throw new IllegalArgumentException(&quot;The normal rate cannot be than the reduced rate&quot;);</span>
+        }
+<span class="fc bfc" id="L29" title="All 4 branches covered.">        if (!isValidPeriods(reducedPeriods) || !isValidPeriods(normalPeriods)) {</span>
+<span class="fc" id="L30">            throw new IllegalArgumentException(&quot;The periods are not valid individually&quot;);</span>
+        }
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (!isValidPeriods(reducedPeriods, normalPeriods)) {</span>
+<span class="fc" id="L33">            throw new IllegalArgumentException(&quot;The periods overlaps&quot;);</span>
+        }
+<span class="fc" id="L35">        this.kind = kind;</span>
+<span class="fc" id="L36">        this.hourlyNormalRate = normalRate;</span>
+<span class="fc" id="L37">        this.hourlyReducedRate = reducedRate;</span>
+<span class="fc" id="L38">        this.reduced = reducedPeriods;</span>
+<span class="fc" id="L39">        this.normal = normalPeriods;</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * Checks if two collections of periods are valid together
+     * @param periods1
+     * @param periods2
+     * @return true if the two collections of periods are valid together
+     */
+    private boolean isValidPeriods(ArrayList&lt;Period&gt; periods1, ArrayList&lt;Period&gt; periods2) {
+<span class="fc" id="L49">        Boolean isValid = true;</span>
+<span class="fc" id="L50">        int i = 0;</span>
+<span class="fc bfc" id="L51" title="All 4 branches covered.">        while (i &lt; periods1.size() &amp;&amp; isValid) {</span>
+<span class="fc" id="L52">            isValid = isValidPeriod(periods1.get(i), periods2);</span>
+<span class="fc" id="L53">            i++;</span>
+        }
+<span class="fc" id="L55">        return isValid;</span>
+    }
+
+    /**
+     * checks if a collection of periods is valid
+     * @param list the collection of periods to check
+     * @return true if the periods do not overlap
+     */
+    private Boolean isValidPeriods(ArrayList&lt;Period&gt; list) {
+<span class="fc" id="L64">        Boolean isValid = true;</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        if (list.size() &gt;= 2) {</span>
+<span class="fc" id="L66">            int i = 0;</span>
+<span class="fc" id="L67">            int lastIndex = list.size()-1;</span>
+<span class="fc bfc" id="L68" title="All 4 branches covered.">            while (i &lt; lastIndex &amp;&amp; isValid) {</span>
+<span class="fc" id="L69">                isValid = isValidPeriod(list.get(i), ((List&lt;Period&gt;)list).subList(i + 1, lastIndex+1));</span>
+<span class="fc" id="L70">                i++;</span>
+            }
+        }
+<span class="fc" id="L73">        return isValid;</span>
+    }
+
+    /**
+     * checks if a period is a valid addition to a collection of periods
+     * @param period the Period addition
+     * @param list the collection of periods to check
+     * @return true if the period does not overlap in the collection of periods
+     */
+    private Boolean isValidPeriod(Period period, List&lt;Period&gt; list) {
+<span class="fc" id="L83">        Boolean isValid = true;</span>
+<span class="fc" id="L84">        int i = 0;</span>
+<span class="fc bfc" id="L85" title="All 4 branches covered.">        while (i &lt; list.size() &amp;&amp; isValid) {</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">            isValid = !period.overlaps(list.get(i));</span>
+<span class="fc" id="L87">            i++;</span>
+        }
+<span class="fc" id="L89">        return isValid;</span>
+    }
+
+    public BigDecimal calculate(Period periodStay) {
+<span class="fc" id="L93">        int normalRateHours = periodStay.occurences(normal);</span>
+<span class="fc" id="L94">        int reducedRateHours = periodStay.occurences(reduced);</span>
+<span class="fc" id="L95">        int round = 2;</span>
+
+
+<span class="fc" id="L98">        BigDecimal charge = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(</span>
+<span class="fc" id="L99">                this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));</span>
+
+<span class="pc bpc" id="L101" title="1 of 5 branches missed.">        switch (this.kind) {</span>
+<span class="fc" id="L102">            case VISITOR -&gt; {</span>
+<span class="fc" id="L103">                VisitorRate visReduction = new VisitorRate();</span>
+<span class="fc" id="L104">                charge = visReduction.reduction(charge).setScale(round, RoundingMode.HALF_UP);</span>
+            }
+<span class="fc" id="L106">            case STUDENT -&gt; {</span>
+<span class="fc" id="L107">                StudentRate stuReduction = new StudentRate();</span>
+<span class="fc" id="L108">                charge = stuReduction.reduction(charge).setScale(round, RoundingMode.HALF_UP);</span>
+            }
+<span class="fc" id="L110">            case STAFF -&gt; {</span>
+<span class="fc" id="L111">                StaffRate staReduction = new StaffRate();</span>
+<span class="fc" id="L112">                charge = staReduction.reduction(charge).setScale(round, RoundingMode.HALF_UP);</span>
+            }
+            case MANAGEMENT -&gt; {
+<span class="fc" id="L115">                ManagementRate manReduction = new ManagementRate();</span>
+<span class="fc" id="L116">                charge = manReduction.reduction(charge).setScale(round, RoundingMode.HALF_UP);</span>
+            }
+        }
+
+<span class="fc" id="L120">        return charge;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

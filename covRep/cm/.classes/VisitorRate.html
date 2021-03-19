@@ -1,0 +1,100 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: VisitorRate</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">cm</a> ]
+</div>
+
+<h1>Coverage Summary for Class: VisitorRate (cm)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">VisitorRate</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/ 6)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package cm;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.math.BigDecimal;
+<i>4</i>&nbsp;
+<b class="fc"><i>5</i>&nbsp;public class VisitorRate {</b>
+<i>6</i>&nbsp;    public BigDecimal reduction(BigDecimal amount){
+<b class="fc"><i>7</i>&nbsp;        BigDecimal freeRate = new BigDecimal(8.00);</b>
+<b class="fc"><i>8</i>&nbsp;        BigDecimal reduction = new BigDecimal(0.50);</b>
+<i>9</i>&nbsp;
+<b class="pc"><i>10</i>&nbsp;        if(amount.compareTo(freeRate)&lt;=0){</b>
+<b class="nc"><i>11</i>&nbsp;            return new BigDecimal(0.00);</b>
+<i>12</i>&nbsp;        }
+<i>13</i>&nbsp;        else {
+<b class="fc"><i>14</i>&nbsp;            return ((amount.subtract(freeRate)).multiply(reduction));</b>
+<i>15</i>&nbsp;        }
+<i>16</i>&nbsp;    }
+<i>17</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-03-15 12:55</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HallJamesTestTask3.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HallJamesVerificationProject$HallJamesTestTask3.exec</a> &gt; <a href="index.source.html" class="el_package">cm</a> &gt; <span class="el_source">HallJamesTestTask3.java</span></div><h1>HallJamesTestTask3.java</h1><pre class="source lang-java linenums">package cm;
+
+import org.junit.Test;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
+import org.junit.Assert;
+
+<span class="fc" id="L9">public class HallJamesTestTask3 {</span>
+
+    /////Rate() method test
+    @Test()
+    public void test1Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; reducedRate &lt;= normalRate
+
+<span class="fc" id="L16">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L17">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L18">        BigDecimal reducedRate = new BigDecimal(1);</span>
+<span class="fc" id="L19">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L20">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L21">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L22">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L23">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L24">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="fc" id="L26">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L27">    }</span>
+
+    @Test()
+    public void test2Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; reducedRate &lt;= normalRate
+
+<span class="fc" id="L33">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L34">        BigDecimal normalRate = new BigDecimal(2);</span>
+<span class="fc" id="L35">        BigDecimal reducedRate = new BigDecimal(1);</span>
+<span class="fc" id="L36">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L37">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L38">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L39">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L40">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L41">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="fc" id="L43">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L44">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test3Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; reducedRate &lt;= normalRate
+
+<span class="fc" id="L50">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L51">        BigDecimal normalRate = new BigDecimal(0);</span>
+<span class="fc" id="L52">        BigDecimal reducedRate = new BigDecimal(1);</span>
+<span class="fc" id="L53">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L54">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L55">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L56">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L57">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L58">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="nc" id="L60">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L61">    }</span>
+
+    @Test()
+    public void test4Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; 0 ≤ normalRate
+
+<span class="fc" id="L67">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L68">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L69">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L70">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L71">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L72">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L73">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L74">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L75">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="fc" id="L77">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L78">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test5Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; 0 ≤ normalRate
+<span class="fc" id="L83">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L84">        BigDecimal normalRate = null;</span>
+<span class="fc" id="L85">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L86">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L87">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L88">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L89">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L90">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L91">        normalPeriods.add(new Period(10,17));</span>
+
+
+<span class="nc" id="L94">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L95">    }</span>
+
+    @Test()
+    public void test6Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; 0 ≤ reducedRate
+
+<span class="fc" id="L101">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L102">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L103">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L104">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L105">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L106">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L107">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L108">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L109">        normalPeriods.add(new Period(10,17));</span>
+
+
+<span class="fc" id="L112">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L113">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test7Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; 0 ≤ reducedRate
+
+<span class="fc" id="L119">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L120">        BigDecimal normalRate = new BigDecimal(0);</span>
+<span class="fc" id="L121">        BigDecimal reducedRate = null;</span>
+<span class="fc" id="L122">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L123">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L124">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L125">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L126">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L127">        normalPeriods.add(new Period(10,17));</span>
+
+
+<span class="nc" id="L130">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L131">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test8Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; 0 ≤ normalRate, reducedRate ≤ normalRate
+
+<span class="fc" id="L137">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L138">        BigDecimal normalRate = new BigDecimal(-1);</span>
+<span class="fc" id="L139">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L140">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L141">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L142">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L143">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L144">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L145">        normalPeriods.add(new Period(10,17));</span>
+
+
+<span class="nc" id="L148">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L149">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test9Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; 0 ≤ reducedRate
+
+<span class="fc" id="L155">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L156">        BigDecimal normalRate = new BigDecimal(0);</span>
+<span class="fc" id="L157">        BigDecimal reducedRate = new BigDecimal(-1);</span>
+<span class="fc" id="L158">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L159">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L160">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L161">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L162">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L163">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="nc" id="L165">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L166">    }</span>
+
+    @Test()
+    public void test10Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; reducedPeriods must not overlap normalPeriods
+
+<span class="fc" id="L172">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L173">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L174">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L175">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L176">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L177">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L178">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L179">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L180">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="fc" id="L182">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L183">    }</span>
+
+    @Test()
+    public void test11Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; reducedPeriods must not overlap normalPeriods
+
+<span class="fc" id="L189">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L190">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L191">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L192">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L194">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L195">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L196">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="fc" id="L198">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L199">    }</span>
+
+    @Test()
+    public void test12Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; reducedPeriods must not overlap normalPeriods
+
+<span class="fc" id="L205">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L206">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L207">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L208">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L209">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L210">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L211">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L213">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L214">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test13Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; reducedPeriods must not overlap normalPeriods
+
+<span class="fc" id="L220">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L221">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L222">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L223">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L224">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L225">        reducedPeriods.add(new Period(9,11));</span>
+<span class="fc" id="L226">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L227">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L228">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="nc" id="L230">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L231">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test14Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; reducedPeriods must not overlap normalPeriods
+
+<span class="fc" id="L237">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L238">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L239">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L240">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L241">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L242">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L243">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L244">        normalPeriods.add(new Period(6,9));</span>
+<span class="fc" id="L245">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="nc" id="L247">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L248">    }</span>
+
+    @Test()
+    public void test15Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; normalPeriods must not overlap normalPeriods
+
+<span class="fc" id="L254">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L255">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L256">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L257">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L258">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L259">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L260">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L261">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L262">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="fc" id="L264">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L265">    }</span>
+
+    @Test()
+    public void test16Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; normalPeriods must not overlap normalPeriods
+
+<span class="fc" id="L271">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L272">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L273">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L274">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L275">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L276">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L277">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L279">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L280">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test17Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; normalPeriods must not overlap normalPeriods
+
+<span class="fc" id="L286">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L287">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L288">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L289">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L290">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L291">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L292">        normalPeriods.add(new Period(7,11));</span>
+<span class="fc" id="L293">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="nc" id="L295">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L296">    }</span>
+
+    @Test()
+    public void test18Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; reducedPeriods must not overlap reducedPeriods
+
+<span class="fc" id="L302">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L303">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L304">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L305">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L306">        reducedPeriods.add(new Period(6,7));</span>
+<span class="fc" id="L307">        reducedPeriods.add(new Period(9,10));</span>
+<span class="fc" id="L308">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L309">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L310">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="fc" id="L312">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L313">    }</span>
+
+    @Test()
+    public void test19Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; reducedPeriods must not overlap reducedPeriods
+
+<span class="fc" id="L319">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L320">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L321">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L322">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L324">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L325">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L326">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="fc" id="L328">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L329">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test20Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; reducedPeriods must not overlap reducedPeriods
+
+<span class="fc" id="L335">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L336">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L337">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L338">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L339">        reducedPeriods.add(new Period(6,9));</span>
+<span class="fc" id="L340">        reducedPeriods.add(new Period(8,10));</span>
+<span class="fc" id="L341">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L342">        normalPeriods.add(new Period(10,17));</span>
+
+<span class="nc" id="L344">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L345">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test21Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; Periods cannot be Null
+
+<span class="fc" id="L351">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L352">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L353">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L354">        ArrayList&lt;Period&gt; reducedPeriods = null;</span>
+
+<span class="fc" id="L356">        ArrayList&lt;Period&gt; normalPeriods = null;</span>
+
+
+<span class="nc" id="L359">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L360">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test22Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; Periods cannot be Null
+
+<span class="fc" id="L366">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L367">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L368">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L369">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L371">        ArrayList&lt;Period&gt; normalPeriods = null;</span>
+
+
+<span class="nc" id="L374">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L375">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test23Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; Periods cannot be Null
+
+<span class="fc" id="L381">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L382">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L383">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L384">        ArrayList&lt;Period&gt; reducedPeriods = null;</span>
+
+<span class="fc" id="L386">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+
+
+<span class="nc" id="L389">        Rate testRate = new Rate(parkKind, normalRate, reducedRate, reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L390">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test24Rate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; reducedPeriods must not overlap normalPeriods
+
+<span class="fc" id="L396">        CarParkKind parkKind = CarParkKind.STAFF;</span>
+<span class="fc" id="L397">        BigDecimal normalRate = new BigDecimal(1);</span>
+<span class="fc" id="L398">        BigDecimal reducedRate = new BigDecimal(0);</span>
+<span class="fc" id="L399">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L400">        reducedPeriods.add(new Period(6,9));</span>
+<span class="fc" id="L401">        reducedPeriods.add(new Period(8,10));</span>
+<span class="fc" id="L402">        reducedPeriods.add(new Period(9,11));</span>
+<span class="fc" id="L403">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L404">        normalPeriods.add(new Period(11,12));</span>
+
+<span class="nc" id="L406">        Rate testRate = new Rate(parkKind, normalRate, reducedRate,reducedPeriods, normalPeriods);</span>
+<span class="nc" id="L407">    }</span>
+
+    ////Calculate tests
+
+    //Return Rate class to prevent repetition
+    private Rate testRateMethodStaff(){
+        //Partitioned Test -&gt; 0 ≤ startHour
+<span class="fc" id="L414">        CarParkKind kind = CarParkKind.STAFF;</span>
+<span class="fc" id="L415">        BigDecimal normalRate = new BigDecimal(10);</span>
+<span class="fc" id="L416">        BigDecimal reducedRate = new BigDecimal(5);</span>
+<span class="fc" id="L417">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L418">        reducedPeriods.add(new Period(9,11));</span>
+<span class="fc" id="L419">        reducedPeriods.add(new Period(17,19));</span>
+<span class="fc" id="L420">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L421">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L422">        normalPeriods.add(new Period(11,17));</span>
+<span class="fc" id="L423">        Rate rate = new Rate(kind, normalRate, reducedRate, reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L424">        return rate;</span>
+    }
+
+    private Rate testRateMethodStudent(){
+        //Partitioned Test -&gt; 0 ≤ startHour
+<span class="fc" id="L429">        CarParkKind kind = CarParkKind.STUDENT;</span>
+<span class="fc" id="L430">        BigDecimal normalRate = new BigDecimal(10);</span>
+<span class="fc" id="L431">        BigDecimal reducedRate = new BigDecimal(5);</span>
+<span class="fc" id="L432">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L433">        reducedPeriods.add(new Period(9,11));</span>
+<span class="fc" id="L434">        reducedPeriods.add(new Period(17,19));</span>
+<span class="fc" id="L435">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L436">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L437">        normalPeriods.add(new Period(11,17));</span>
+<span class="fc" id="L438">        Rate rate = new Rate(kind, normalRate, reducedRate, reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L439">        return rate;</span>
+    }
+
+    private Rate testRateMethodManagement(){
+        //Partitioned Test -&gt; 0 ≤ startHour
+<span class="fc" id="L444">        CarParkKind kind = CarParkKind.MANAGEMENT;</span>
+<span class="fc" id="L445">        BigDecimal normalRate = new BigDecimal(10);</span>
+<span class="fc" id="L446">        BigDecimal reducedRate = new BigDecimal(2);</span>
+<span class="fc" id="L447">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L448">        reducedPeriods.add(new Period(9,11));</span>
+<span class="fc" id="L449">        reducedPeriods.add(new Period(17,19));</span>
+<span class="fc" id="L450">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L451">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L452">        normalPeriods.add(new Period(11,17));</span>
+<span class="fc" id="L453">        Rate rate = new Rate(kind, normalRate, reducedRate, reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L454">        return rate;</span>
+    }
+
+    private Rate testRateMethodVisitor(){
+        //Partitioned Test -&gt; 0 ≤ startHour
+<span class="fc" id="L459">        CarParkKind kind = CarParkKind.VISITOR;</span>
+<span class="fc" id="L460">        BigDecimal normalRate = new BigDecimal(10);</span>
+<span class="fc" id="L461">        BigDecimal reducedRate = new BigDecimal(5);</span>
+<span class="fc" id="L462">        ArrayList&lt;Period&gt; reducedPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L463">        reducedPeriods.add(new Period(9,11));</span>
+<span class="fc" id="L464">        reducedPeriods.add(new Period(17,19));</span>
+<span class="fc" id="L465">        ArrayList&lt;Period&gt; normalPeriods = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L466">        normalPeriods.add(new Period(7,9));</span>
+<span class="fc" id="L467">        normalPeriods.add(new Period(11,17));</span>
+<span class="fc" id="L468">        Rate rate = new Rate(kind, normalRate, reducedRate, reducedPeriods, normalPeriods);</span>
+<span class="fc" id="L469">        return rate;</span>
+    }
+
+    @Test()
+    public void test1Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; 0 ≤ startHour
+<span class="fc" id="L475">        Rate rate = testRateMethodStaff();</span>
+
+<span class="fc" id="L477">        Period per = new Period(0,24);</span>
+
+<span class="fc" id="L479">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+
+<span class="fc" id="L481">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L482">    }</span>
+
+    @Test()
+    public void test2Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; startHour ≤ 24
+<span class="fc" id="L487">        Rate rate = testRateMethodStaff();</span>
+
+<span class="fc" id="L489">        Period per = new Period(23,24);</span>
+
+<span class="fc" id="L491">        BigDecimal outputExpected = new BigDecimal(&quot;0.00&quot;);</span>
+
+<span class="fc" id="L493">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L494">    }</span>
+
+    @Test()
+    public void test3Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; 0 ≤ endHour
+<span class="fc" id="L499">        Rate rate = testRateMethodStaff();</span>
+
+<span class="fc" id="L501">        Period per = new Period(0,1);</span>
+
+<span class="fc" id="L503">        BigDecimal outputExpected = new BigDecimal(&quot;0.00&quot;);</span>
+
+<span class="fc" id="L505">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L506">    }</span>
+
+    @Test()
+    public void test4Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; endHour ≤ 24
+<span class="fc" id="L511">        Rate rate = testRateMethodStaff();</span>
+
+<span class="fc" id="L513">        Period per = new Period(0,24);</span>
+
+<span class="fc" id="L515">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+
+<span class="fc" id="L517">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L518">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test5Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; 0 ≤ startHour
+<span class="fc" id="L523">        Rate rate = testRateMethodStaff();</span>
+
+<span class="nc" id="L525">        Period per = new Period(-1,24);</span>
+
+<span class="nc" id="L527">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+
+<span class="nc" id="L529">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="nc" id="L530">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test6Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; startHour ≤ 24
+<span class="fc" id="L535">        Rate rate = testRateMethodStaff();</span>
+
+<span class="nc" id="L537">        Period per = new Period(25,24);</span>
+
+<span class="nc" id="L539">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+
+<span class="nc" id="L541">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="nc" id="L542">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test7Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; 0 ≤ endHour
+<span class="fc" id="L547">        Rate rate = testRateMethodStaff();</span>
+
+<span class="nc" id="L549">        Period per = new Period(0,-1);</span>
+
+<span class="nc" id="L551">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+
+<span class="nc" id="L553">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="nc" id="L554">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test8Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; endHour ≤ 24
+<span class="fc" id="L559">        Rate rate = testRateMethodStaff();</span>
+
+<span class="nc" id="L561">        Period per = new Period(0,25);</span>
+
+<span class="nc" id="L563">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+
+<span class="nc" id="L565">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="nc" id="L566">    }</span>
+
+    @Test()
+    public void test9Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; startHour &lt; endHour
+<span class="fc" id="L571">        Rate rate = testRateMethodStaff();</span>
+
+<span class="fc" id="L573">        Period per = new Period(11,12);</span>
+
+<span class="fc" id="L575">        BigDecimal outputExpected = new BigDecimal(&quot;10.00&quot;);</span>
+
+<span class="fc" id="L577">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L578">    }</span>
+
+    @Test()
+    public void test10Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; startHour &lt; endHour
+<span class="fc" id="L583">        Rate rate = testRateMethodStaff();</span>
+
+<span class="fc" id="L585">        Period per = new Period(0,24);</span>
+
+<span class="fc" id="L587">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+
+<span class="fc" id="L589">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L590">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test11Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; startHour &lt; endHour
+<span class="fc" id="L595">        Rate rate = testRateMethodStaff();</span>
+
+<span class="nc" id="L597">        Period per = new Period(11,11);</span>
+
+<span class="nc" id="L599">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+
+<span class="nc" id="L601">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="nc" id="L602">    }</span>
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test12Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; startHour &lt; endHour
+<span class="fc" id="L607">        Rate rate = testRateMethodStaff();</span>
+
+<span class="nc" id="L609">        Period per = new Period(12,11);</span>
+
+<span class="nc" id="L611">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+
+<span class="nc" id="L613">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="nc" id="L614">    }</span>
+
+    @Test()
+    public void test13Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; kind = STUDENT
+<span class="fc" id="L619">        Rate rate = testRateMethodStudent();</span>
+
+<span class="fc" id="L621">        Period per = new Period(0,24);</span>
+
+<span class="fc" id="L623">        BigDecimal outputExpected = new BigDecimal(&quot;76.38&quot;);</span>
+
+<span class="fc" id="L625">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L626">    }</span>
+
+    @Test()
+    public void test14Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; kind = STUDENT
+<span class="fc" id="L631">        Rate rate = testRateMethodStudent();</span>
+
+<span class="fc" id="L633">        Period per = new Period(9,10);</span>
+
+<span class="fc" id="L635">        BigDecimal outputExpected = new BigDecimal(&quot;5.00&quot;);</span>
+
+<span class="fc" id="L637">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L638">    }</span>
+
+    @Test()
+    public void test15Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; kind = MANAGEMENT
+<span class="fc" id="L643">        Rate rate = testRateMethodManagement();</span>
+
+<span class="fc" id="L645">        Period per = new Period(0,24);</span>
+
+<span class="fc" id="L647">        BigDecimal outputExpected = new BigDecimal(&quot;88.00&quot;);</span>
+
+<span class="fc" id="L649">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L650">    }</span>
+
+    @Test()
+    public void test16Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; kind = MANAGEMENT
+<span class="fc" id="L655">        Rate rate = testRateMethodManagement();</span>
+
+<span class="fc" id="L657">        Period per = new Period(10,11);</span>
+
+<span class="fc" id="L659">        BigDecimal outputExpected = new BigDecimal(&quot;3.00&quot;);</span>
+
+<span class="fc" id="L661">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L662">    }</span>
+
+    @Test()
+    public void test17Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; kind = VISITOR
+<span class="fc" id="L667">        Rate rate = testRateMethodVisitor();</span>
+
+<span class="fc" id="L669">        Period per = new Period(0,24);</span>
+
+<span class="fc" id="L671">        BigDecimal outputExpected = new BigDecimal(&quot;46.00&quot;);</span>
+
+<span class="fc" id="L673">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L674">    }</span>
+
+    @Test()
+    public void test18Calculate() throws IllegalArgumentException {
+        //Partitioned Test -&gt; kind = VISITOR
+<span class="fc" id="L679">        Rate rate = testRateMethodVisitor();</span>
+
+<span class="fc" id="L681">        Period per = new Period(9,10);</span>
+
+<span class="fc" id="L683">        BigDecimal outputExpected = new BigDecimal(&quot;0.00&quot;);</span>
+
+<span class="fc" id="L685">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L686">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
