@@ -469,6 +469,7 @@ public class HallJamesTestTask3 {
         return rate;
     }
 
+
     @Test()
     public void test1Calculate() throws IllegalArgumentException {
         //Partitioned Test -> 0 ≤ startHour

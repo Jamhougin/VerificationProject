@@ -1,13 +1,12 @@
 package cm;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class CarParkKindReduction {
     int round = 2;
-    public BigDecimal carParkKindReduction(BigDecimal charge, @NotNull CarParkKind kind){
+    public BigDecimal carParkKindReduction(BigDecimal charge, CarParkKind kind){
         switch (kind) {
             case VISITOR -> {
                 VisitorRate visReduction = new VisitorRate();
@@ -25,7 +24,6 @@ public class CarParkKindReduction {
                 ManagementRate manReduction = new ManagementRate();
                 charge = manReduction.reduction(charge).setScale(round, RoundingMode.HALF_UP);
             }
-            default -> throw new IllegalStateException("Unexpected value: " + kind);
         }
 
         return charge;
