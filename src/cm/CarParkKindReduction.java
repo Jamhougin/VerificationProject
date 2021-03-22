@@ -24,6 +24,7 @@ public class CarParkKindReduction {
                 ManagementRate manReduction = new ManagementRate();
                 charge = manReduction.reduction(charge).setScale(round, RoundingMode.HALF_UP);
             }
+            default -> throw new IllegalStateException("Unexpected value: " + kind);
         }
 
         return charge;

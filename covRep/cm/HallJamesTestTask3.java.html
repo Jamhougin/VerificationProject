@@ -469,220 +469,221 @@ import org.junit.Assert;
 <span class="fc" id="L469">        return rate;</span>
     }
 
+
     @Test()
     public void test1Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; 0 ≤ startHour
-<span class="fc" id="L475">        Rate rate = testRateMethodStaff();</span>
+<span class="fc" id="L476">        Rate rate = testRateMethodStaff();</span>
 
-<span class="fc" id="L477">        Period per = new Period(0,24);</span>
+<span class="fc" id="L478">        Period per = new Period(0,24);</span>
 
-<span class="fc" id="L479">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+<span class="fc" id="L480">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
 
-<span class="fc" id="L481">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="fc" id="L482">    }</span>
+<span class="fc" id="L482">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L483">    }</span>
 
     @Test()
     public void test2Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; startHour ≤ 24
-<span class="fc" id="L487">        Rate rate = testRateMethodStaff();</span>
+<span class="fc" id="L488">        Rate rate = testRateMethodStaff();</span>
 
-<span class="fc" id="L489">        Period per = new Period(23,24);</span>
+<span class="fc" id="L490">        Period per = new Period(23,24);</span>
 
-<span class="fc" id="L491">        BigDecimal outputExpected = new BigDecimal(&quot;0.00&quot;);</span>
+<span class="fc" id="L492">        BigDecimal outputExpected = new BigDecimal(&quot;0.00&quot;);</span>
 
-<span class="fc" id="L493">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="fc" id="L494">    }</span>
+<span class="fc" id="L494">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L495">    }</span>
 
     @Test()
     public void test3Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; 0 ≤ endHour
-<span class="fc" id="L499">        Rate rate = testRateMethodStaff();</span>
+<span class="fc" id="L500">        Rate rate = testRateMethodStaff();</span>
 
-<span class="fc" id="L501">        Period per = new Period(0,1);</span>
+<span class="fc" id="L502">        Period per = new Period(0,1);</span>
 
-<span class="fc" id="L503">        BigDecimal outputExpected = new BigDecimal(&quot;0.00&quot;);</span>
+<span class="fc" id="L504">        BigDecimal outputExpected = new BigDecimal(&quot;0.00&quot;);</span>
 
-<span class="fc" id="L505">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="fc" id="L506">    }</span>
+<span class="fc" id="L506">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L507">    }</span>
 
     @Test()
     public void test4Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; endHour ≤ 24
-<span class="fc" id="L511">        Rate rate = testRateMethodStaff();</span>
+<span class="fc" id="L512">        Rate rate = testRateMethodStaff();</span>
 
-<span class="fc" id="L513">        Period per = new Period(0,24);</span>
+<span class="fc" id="L514">        Period per = new Period(0,24);</span>
 
-<span class="fc" id="L515">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+<span class="fc" id="L516">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
 
-<span class="fc" id="L517">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="fc" id="L518">    }</span>
+<span class="fc" id="L518">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L519">    }</span>
 
     @Test(expected = IllegalArgumentException.class)
     public void test5Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; 0 ≤ startHour
-<span class="fc" id="L523">        Rate rate = testRateMethodStaff();</span>
+<span class="fc" id="L524">        Rate rate = testRateMethodStaff();</span>
 
-<span class="nc" id="L525">        Period per = new Period(-1,24);</span>
+<span class="nc" id="L526">        Period per = new Period(-1,24);</span>
 
-<span class="nc" id="L527">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+<span class="nc" id="L528">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
 
-<span class="nc" id="L529">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="nc" id="L530">    }</span>
+<span class="nc" id="L530">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="nc" id="L531">    }</span>
 
     @Test(expected = IllegalArgumentException.class)
     public void test6Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; startHour ≤ 24
-<span class="fc" id="L535">        Rate rate = testRateMethodStaff();</span>
+<span class="fc" id="L536">        Rate rate = testRateMethodStaff();</span>
 
-<span class="nc" id="L537">        Period per = new Period(25,24);</span>
+<span class="nc" id="L538">        Period per = new Period(25,24);</span>
 
-<span class="nc" id="L539">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+<span class="nc" id="L540">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
 
-<span class="nc" id="L541">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="nc" id="L542">    }</span>
+<span class="nc" id="L542">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="nc" id="L543">    }</span>
 
     @Test(expected = IllegalArgumentException.class)
     public void test7Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; 0 ≤ endHour
-<span class="fc" id="L547">        Rate rate = testRateMethodStaff();</span>
+<span class="fc" id="L548">        Rate rate = testRateMethodStaff();</span>
 
-<span class="nc" id="L549">        Period per = new Period(0,-1);</span>
+<span class="nc" id="L550">        Period per = new Period(0,-1);</span>
 
-<span class="nc" id="L551">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+<span class="nc" id="L552">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
 
-<span class="nc" id="L553">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="nc" id="L554">    }</span>
+<span class="nc" id="L554">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="nc" id="L555">    }</span>
 
     @Test(expected = IllegalArgumentException.class)
     public void test8Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; endHour ≤ 24
-<span class="fc" id="L559">        Rate rate = testRateMethodStaff();</span>
+<span class="fc" id="L560">        Rate rate = testRateMethodStaff();</span>
 
-<span class="nc" id="L561">        Period per = new Period(0,25);</span>
+<span class="nc" id="L562">        Period per = new Period(0,25);</span>
 
-<span class="nc" id="L563">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+<span class="nc" id="L564">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
 
-<span class="nc" id="L565">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="nc" id="L566">    }</span>
+<span class="nc" id="L566">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="nc" id="L567">    }</span>
 
     @Test()
     public void test9Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; startHour &lt; endHour
-<span class="fc" id="L571">        Rate rate = testRateMethodStaff();</span>
+<span class="fc" id="L572">        Rate rate = testRateMethodStaff();</span>
 
-<span class="fc" id="L573">        Period per = new Period(11,12);</span>
+<span class="fc" id="L574">        Period per = new Period(11,12);</span>
 
-<span class="fc" id="L575">        BigDecimal outputExpected = new BigDecimal(&quot;10.00&quot;);</span>
+<span class="fc" id="L576">        BigDecimal outputExpected = new BigDecimal(&quot;10.00&quot;);</span>
 
-<span class="fc" id="L577">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="fc" id="L578">    }</span>
+<span class="fc" id="L578">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L579">    }</span>
 
     @Test()
     public void test10Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; startHour &lt; endHour
-<span class="fc" id="L583">        Rate rate = testRateMethodStaff();</span>
+<span class="fc" id="L584">        Rate rate = testRateMethodStaff();</span>
 
-<span class="fc" id="L585">        Period per = new Period(0,24);</span>
+<span class="fc" id="L586">        Period per = new Period(0,24);</span>
 
-<span class="fc" id="L587">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+<span class="fc" id="L588">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
 
-<span class="fc" id="L589">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="fc" id="L590">    }</span>
+<span class="fc" id="L590">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L591">    }</span>
 
     @Test(expected = IllegalArgumentException.class)
     public void test11Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; startHour &lt; endHour
-<span class="fc" id="L595">        Rate rate = testRateMethodStaff();</span>
+<span class="fc" id="L596">        Rate rate = testRateMethodStaff();</span>
 
-<span class="nc" id="L597">        Period per = new Period(11,11);</span>
+<span class="nc" id="L598">        Period per = new Period(11,11);</span>
 
-<span class="nc" id="L599">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+<span class="nc" id="L600">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
 
-<span class="nc" id="L601">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="nc" id="L602">    }</span>
+<span class="nc" id="L602">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="nc" id="L603">    }</span>
 
     @Test(expected = IllegalArgumentException.class)
     public void test12Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; startHour &lt; endHour
-<span class="fc" id="L607">        Rate rate = testRateMethodStaff();</span>
+<span class="fc" id="L608">        Rate rate = testRateMethodStaff();</span>
 
-<span class="nc" id="L609">        Period per = new Period(12,11);</span>
+<span class="nc" id="L610">        Period per = new Period(12,11);</span>
 
-<span class="nc" id="L611">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
+<span class="nc" id="L612">        BigDecimal outputExpected = new BigDecimal(&quot;16.00&quot;);</span>
 
-<span class="nc" id="L613">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="nc" id="L614">    }</span>
+<span class="nc" id="L614">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="nc" id="L615">    }</span>
 
     @Test()
     public void test13Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; kind = STUDENT
-<span class="fc" id="L619">        Rate rate = testRateMethodStudent();</span>
+<span class="fc" id="L620">        Rate rate = testRateMethodStudent();</span>
 
-<span class="fc" id="L621">        Period per = new Period(0,24);</span>
+<span class="fc" id="L622">        Period per = new Period(0,24);</span>
 
-<span class="fc" id="L623">        BigDecimal outputExpected = new BigDecimal(&quot;76.38&quot;);</span>
+<span class="fc" id="L624">        BigDecimal outputExpected = new BigDecimal(&quot;76.38&quot;);</span>
 
-<span class="fc" id="L625">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="fc" id="L626">    }</span>
+<span class="fc" id="L626">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L627">    }</span>
 
     @Test()
     public void test14Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; kind = STUDENT
-<span class="fc" id="L631">        Rate rate = testRateMethodStudent();</span>
+<span class="fc" id="L632">        Rate rate = testRateMethodStudent();</span>
 
-<span class="fc" id="L633">        Period per = new Period(9,10);</span>
+<span class="fc" id="L634">        Period per = new Period(9,10);</span>
 
-<span class="fc" id="L635">        BigDecimal outputExpected = new BigDecimal(&quot;5.00&quot;);</span>
+<span class="fc" id="L636">        BigDecimal outputExpected = new BigDecimal(&quot;5.00&quot;);</span>
 
-<span class="fc" id="L637">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="fc" id="L638">    }</span>
+<span class="fc" id="L638">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L639">    }</span>
 
     @Test()
     public void test15Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; kind = MANAGEMENT
-<span class="fc" id="L643">        Rate rate = testRateMethodManagement();</span>
+<span class="fc" id="L644">        Rate rate = testRateMethodManagement();</span>
 
-<span class="fc" id="L645">        Period per = new Period(0,24);</span>
+<span class="fc" id="L646">        Period per = new Period(0,24);</span>
 
-<span class="fc" id="L647">        BigDecimal outputExpected = new BigDecimal(&quot;88.00&quot;);</span>
+<span class="fc" id="L648">        BigDecimal outputExpected = new BigDecimal(&quot;88.00&quot;);</span>
 
-<span class="fc" id="L649">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="fc" id="L650">    }</span>
+<span class="fc" id="L650">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L651">    }</span>
 
     @Test()
     public void test16Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; kind = MANAGEMENT
-<span class="fc" id="L655">        Rate rate = testRateMethodManagement();</span>
+<span class="fc" id="L656">        Rate rate = testRateMethodManagement();</span>
 
-<span class="fc" id="L657">        Period per = new Period(10,11);</span>
+<span class="fc" id="L658">        Period per = new Period(10,11);</span>
 
-<span class="fc" id="L659">        BigDecimal outputExpected = new BigDecimal(&quot;3.00&quot;);</span>
+<span class="fc" id="L660">        BigDecimal outputExpected = new BigDecimal(&quot;3.00&quot;);</span>
 
-<span class="fc" id="L661">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="fc" id="L662">    }</span>
+<span class="fc" id="L662">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L663">    }</span>
 
     @Test()
     public void test17Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; kind = VISITOR
-<span class="fc" id="L667">        Rate rate = testRateMethodVisitor();</span>
+<span class="fc" id="L668">        Rate rate = testRateMethodVisitor();</span>
 
-<span class="fc" id="L669">        Period per = new Period(0,24);</span>
+<span class="fc" id="L670">        Period per = new Period(0,24);</span>
 
-<span class="fc" id="L671">        BigDecimal outputExpected = new BigDecimal(&quot;46.00&quot;);</span>
+<span class="fc" id="L672">        BigDecimal outputExpected = new BigDecimal(&quot;46.00&quot;);</span>
 
-<span class="fc" id="L673">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="fc" id="L674">    }</span>
+<span class="fc" id="L674">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L675">    }</span>
 
     @Test()
     public void test18Calculate() throws IllegalArgumentException {
         //Partitioned Test -&gt; kind = VISITOR
-<span class="fc" id="L679">        Rate rate = testRateMethodVisitor();</span>
+<span class="fc" id="L680">        Rate rate = testRateMethodVisitor();</span>
 
-<span class="fc" id="L681">        Period per = new Period(9,10);</span>
+<span class="fc" id="L682">        Period per = new Period(9,10);</span>
 
-<span class="fc" id="L683">        BigDecimal outputExpected = new BigDecimal(&quot;0.00&quot;);</span>
+<span class="fc" id="L684">        BigDecimal outputExpected = new BigDecimal(&quot;0.00&quot;);</span>
 
-<span class="fc" id="L685">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
-<span class="fc" id="L686">    }</span>
+<span class="fc" id="L686">        Assert.assertEquals(outputExpected, rate.calculate(per));</span>
+<span class="fc" id="L687">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

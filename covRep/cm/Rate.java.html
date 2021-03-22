@@ -92,32 +92,14 @@ public class Rate {
     public BigDecimal calculate(Period periodStay) {
 <span class="fc" id="L93">        int normalRateHours = periodStay.occurences(normal);</span>
 <span class="fc" id="L94">        int reducedRateHours = periodStay.occurences(reduced);</span>
-<span class="fc" id="L95">        int round = 2;</span>
 
+<span class="fc" id="L96">        BigDecimal charge = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(</span>
+<span class="fc" id="L97">                this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));</span>
 
-<span class="fc" id="L98">        BigDecimal charge = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(</span>
-<span class="fc" id="L99">                this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));</span>
+<span class="fc" id="L99">        CarParkKindReduction calcRate = new CarParkKindReduction();</span>
+<span class="fc" id="L100">        charge = calcRate.carParkKindReduction(charge, this.kind);</span>
 
-<span class="pc bpc" id="L101" title="1 of 5 branches missed.">        switch (this.kind) {</span>
-<span class="fc" id="L102">            case VISITOR -&gt; {</span>
-<span class="fc" id="L103">                VisitorRate visReduction = new VisitorRate();</span>
-<span class="fc" id="L104">                charge = visReduction.reduction(charge).setScale(round, RoundingMode.HALF_UP);</span>
-            }
-<span class="fc" id="L106">            case STUDENT -&gt; {</span>
-<span class="fc" id="L107">                StudentRate stuReduction = new StudentRate();</span>
-<span class="fc" id="L108">                charge = stuReduction.reduction(charge).setScale(round, RoundingMode.HALF_UP);</span>
-            }
-<span class="fc" id="L110">            case STAFF -&gt; {</span>
-<span class="fc" id="L111">                StaffRate staReduction = new StaffRate();</span>
-<span class="fc" id="L112">                charge = staReduction.reduction(charge).setScale(round, RoundingMode.HALF_UP);</span>
-            }
-            case MANAGEMENT -&gt; {
-<span class="fc" id="L115">                ManagementRate manReduction = new ManagementRate();</span>
-<span class="fc" id="L116">                charge = manReduction.reduction(charge).setScale(round, RoundingMode.HALF_UP);</span>
-            }
-        }
-
-<span class="fc" id="L120">        return charge;</span>
+<span class="fc" id="L102">        return charge;</span>
     }
 
 }
