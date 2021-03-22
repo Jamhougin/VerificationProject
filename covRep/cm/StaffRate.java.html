@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 <span class="fc" id="L5">public class StaffRate extends Reduction{</span>
     public BigDecimal reduction(BigDecimal amount){
-<span class="fc" id="L7">        BigDecimal maxFullRate = new BigDecimal(16.00);</span>
+<span class="fc" id="L7">        BigDecimal maxFullRate = new BigDecimal(&quot;16.00&quot;);</span>
 
 <span class="fc bfc" id="L9" title="All 2 branches covered.">        if(amount.compareTo(maxFullRate)&lt;=0){</span>
 <span class="fc" id="L10">            return amount;</span>
